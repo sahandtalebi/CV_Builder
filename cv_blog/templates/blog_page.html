@@ -1,0 +1,45 @@
+{% extends 'sheard/main.html' %}
+
+{% block content %}
+
+     <section class="blog-section">
+                <h2 class="section-title">LATEST NEWS</h2>
+
+                <div class="blog-posts-wrapper">
+                    {% for item in object_list %}
+
+                    <article class="blog-post">
+                        <a href="blog/{{ item.id }}" class="blog-post-link">
+                            <img style="border-radius: 30px;" src="{{ item.image.url }}" alt="news 1" class="blog-post-thumbnail">
+                            <h5 class="blog-post-title">{{ item.title|wordwrap:30 }}</h5>
+
+                        </a>
+                        <p class="blog-post-meta">
+                            <span class="post-published-date">{{ item.time|timesince }} ago</span>
+                            <a href="blog/{{ item.id }}" class="post-comments">{{ item.owner.username }}</a>
+                        </p>
+                    </article>
+
+                    {% endfor %}
+                </div>
+            </section>
+
+
+        <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}

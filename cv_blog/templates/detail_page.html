@@ -1,0 +1,25 @@
+{% extends 'sheard/main.html' %}
+
+
+{% block content %}
+
+      <section class="blog-section">
+                <h2 class="section-title">{{ object.title }}</h2>
+                <div class="blog-posts-wrapper">
+                    <div class="col-md-12">
+                        <a href="#!" class="blog-post-link">
+                            <img style="border-radius: 5%;" src="{{ object.image.url }}" alt="news 1" class="blog-post-thumbnail">
+                            <h5 class="blog-post-title">{{ object.title }}</h5>
+                        </a>
+                        <p class="blog-post-meta">
+                            <span class="post-published-date">{{ object.time|timesince }} ago</span>
+                            <a href="#!" class="post-comments">{{ item.owner.username }}</a>
+                        </p>
+                        <br>
+                        <br>
+                        <p style="font-size: 18px"> {{ object.description|linebreaksbr }} </p>
+                   </div>
+                </div>
+            </section>
+
+{% endblock %}

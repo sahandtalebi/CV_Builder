@@ -6,7 +6,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("cv_home.urls"))
+    path("", include("cv_home.urls")),
+    path("", include("cv_contact.urls")),
+    path("", include("cv_blog.urls")),
+    path("", include("cv_portfolio.urls")),
 ]
 
 if settings.DEBUG:

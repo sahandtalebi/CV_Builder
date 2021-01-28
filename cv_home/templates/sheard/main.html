@@ -1,3 +1,4 @@
+{% load render_partial %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,13 @@
 </head>
 <body>
 
-{% block content %}
-
-{% endblock %}
+<div class="content-wrapper">
+    {% render_partial 'header' %}
+    <main>
+        {% block content %}{% endblock %}
+        <footer>Designed by Sahand Talebi</footer>
+    </main>
+</div>
 
 </body>
 {% include 'sheard/foother.html' %}

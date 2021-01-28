@@ -1,0 +1,53 @@
+{% load static %}
+
+    <div class="content-wrapper">
+        <aside>
+            <div class="profile-img-wrapper">
+                <img src="{{ baseSetting.photo.url }}" alt="profile">
+            </div>
+            <h1 class="profile-name">{{ baseSetting.name }}</h1>
+            <div class="text-center">
+                <span class="badge badge-white badge-pill profile-designation">{{ baseSetting.your_job }}</span>
+            </div>
+            <nav class="social-links">
+                {% for item in links %}
+                <a href="{{ item.link }}" class="social-link"><i class="{{ item.icon }}"></i></a>
+                {% endfor %}
+            </nav>
+            <div class="widget">
+                <h5 class="widget-title">personal information</h5>
+                <div class="widget-content">
+                    <p>BIRTHDAY : {{ baseSetting.datetime }}</p>
+                    <p>PHONE : {{ baseSetting.phone }}</p>
+                    <p>MAIL : {{ baseSetting.email }}</p>
+                    <p>Location : {{ baseSetting.Location }}</p>
+                    <button class="btn btn-download-cv btn-primary rounded-pill"> <img src="{% static "images/download.svg" %}" alt="download"
+                        class="btn-img">DOWNLOAD CV </button>
+                </div>
+            </div>
+            <div class="widget card">
+                <div class="card-body">
+                    <div class="widget-content">
+                        <h5 class="widget-title card-title">SKINS</h5>
+
+                        {% for skin in skins %}
+                        <p>{{ skin.name }}</p>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="widget card">
+                <div class="card-body">
+                    <div class="widget-content">
+                        <h5 class="widget-title card-title">INTERESTS</h5>
+                        {% for item in fun %}
+                        <p>{{ item.name }}</p>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>

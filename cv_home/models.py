@@ -64,6 +64,7 @@ class SiteEducation(models.Model):
     name = models.CharField(max_length=200, verbose_name='نام')
     subject = models.CharField(max_length=200, verbose_name='موضوع')
     description = models.TextField(verbose_name='درباره شما')
+    active = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'تنظیمات تحصیلات'
@@ -73,3 +74,31 @@ class SiteEducation(models.Model):
         return self.name
 
 
+class SiteExperience(models.Model):
+    user = models.ManyToOneRel(User, field_name='name', to='name')
+    date_time = models.CharField(max_length=30, verbose_name='زمان')
+    name = models.CharField(max_length=200, verbose_name='نام تیم یا شرکت')
+    subject = models.CharField(max_length=200, verbose_name='نوع فعالیت')
+    description = models.TextField(verbose_name='توضیحات')
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'تنظیمات تجربه'
+        verbose_name_plural = 'ماژول تجربه'
+
+    def __str__(self):
+        return self.name
+
+
+class SiteService(models.Model):
+    user = models.ManyToOneRel(User, field_name='name', to='name')
+    name = models.CharField(max_length=200, verbose_name='نام مدرک')
+    icon = models.ImageField(max_length=100, verbose_name='عکس')
+    description = models.TextField(verbose_name='توضیحات')
+
+    class Meta:
+        verbose_name = 'تنظیمات مدارک'
+        verbose_name_plural = 'ماژول مدارک'
+
+    def __str__(self):
+        return self.name

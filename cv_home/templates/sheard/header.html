@@ -1,9 +1,32 @@
 {% load static %}
+{% url 'home' as homepage %}
+{% url 'contact' as contact_page %}
+{% url 'blog' as blog_page %}
+{% url 'portfolio' as portfolio %}
+
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>sahand talebi</title>
+
 <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'vendors/@fortawesome/fontawesome-free/css/all.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/live-resume.css' %}">
+
+
+<header>
+    <button class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto"><img src="{% static 'images/share.svg' %}"
+                                                                                 alt="share" class="btn-img">
+        SHARE
+    </button>
+    <nav class="collapsible-nav" id="collapsible-nav">
+        <a href="/" class="nav-link{% if request.path == homepage %} active{% endif %}">HOME</a>
+        <a href="/portfolio" class="nav-link {% if request.path == portfolio %} active {% endif %}">PORTFOLIO</a>
+        <a href="/blog" class="nav-link{% if request.path == blog_page %} active {% endif %}">BLOG</a>
+        <a href="/contact" class="nav-link {% if request.path == contact_page %} active {% endif %}">CONTACT</a>
+
+    </nav>
+    <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
+            data-target="collapsible-nav"><img src="{% static 'images/hamburger.svg' %}" alt="hamburger"></button>
+</header>
